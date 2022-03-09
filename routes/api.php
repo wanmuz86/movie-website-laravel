@@ -30,3 +30,9 @@ Route::post('/info', function (Request $request){
     return "Hello ".$request["name"]
     ." You are ".$request["age"]." years old";
 });
+
+Route::post('/movies',[MovieController::create,'createMovie']);
+Route::get('/movies',[MovieController::get,'getAll']);
+Route::get('/movies/{id}',[MovieController::getById,'getById']);
+Route::put('/movies/{id}',[MovieController::update,'update']);
+Route::delete('/movies/{id}',[MovieController::delete,'delete']);
