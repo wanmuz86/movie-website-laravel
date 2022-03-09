@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MovieController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,8 +32,12 @@ Route::post('/info', function (Request $request){
     ." You are ".$request["age"]." years old";
 });
 
-Route::post('/movies',[MovieController::create,'createMovie']);
-Route::get('/movies',[MovieController::get,'getAll']);
-Route::get('/movies/{id}',[MovieController::getById,'getById']);
-Route::put('/movies/{id}',[MovieController::update,'update']);
-Route::delete('/movies/{id}',[MovieController::delete,'delete']);
+Route::post('/movies',[MovieController::class,'create']);
+
+Route::get('/movies',[MovieController::class,'getAll']);
+
+Route::get('/movies/{id}',[MovieController::class,'getById']);
+
+Route::put('/movies/{id}',[MovieController::class,'update']);
+
+Route::delete('/movies/{id}',[MovieController::class,'delete']);

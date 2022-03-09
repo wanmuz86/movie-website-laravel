@@ -16,10 +16,11 @@ class MovieController extends Controller
         $movie->poster_url = $request->poster_url;
         $movie->synopsis = $request->synopsis;
         $movie->video_url = $request->video_url;
-        $movie->director = 1;
-        $movie->category = 1;
+        $movie->year = $request->year;
+        $movie->director_id = 1;
+        $movie->category_id = 1;
         if ($movie->save()){
-            return response()->json(["success"=>true, "data"=>movie]);
+            return response()->json(["success"=>true, "data"=>$movie]);
         }
 
     }
