@@ -41,6 +41,7 @@ class MovieController extends Controller
     public function update(Request $request, $id){
         $movie = Movie::find($id);
         if ($movie){
+            // THis line of code, which is fill , required you to add the fillable property in Movie.php
             $updated = $movie->fill($request->all())->save();
             if ($updated){
                 return response()->json(["success"=>true,"movie"=>$movie]);
@@ -55,6 +56,17 @@ class MovieController extends Controller
     }
 
     public function delete(Request $request, $id){
-
+        $movie = Movie::find($id);
+        if ($movie){
+            if($movie->delete()){
+                return response()->json(["success"=>true,"message"=>"Movie succesfully deleted"]);
+            }
+            else {
+                return response()->json(["success"=>false,"message"=>"Cannot be deleted"]);
+            }
+        }
+        else {
+            return response()->json(["success"=>false,"message"=>"Movie not found"]);
+        }
     }
 }
