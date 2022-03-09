@@ -50,6 +50,9 @@ Route::get('/actors/{id}',[ActorController::class,'getById']);
 Route::put('/actors/{id}',[ActorController::class,'update']);
 Route::delete('/actors/{id}',[ActorController::class,'delete']);
 
+Route::post('/actors/{id}/movies',[ActorController::class,'setMovies']);
+Route::get('/actors/{id}/movies',[ActorController::class,'getMovies']);
+
 Route::post('/categories',[CategoryController::class,'create']);
 Route::get('/categories',[CategoryController::class,'getAll']);
 Route::get('/categories/{id}',[CategoryController::class,'getById']);

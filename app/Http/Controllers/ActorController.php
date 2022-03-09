@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Actor;
+use App\Models\Movie;
 
 class ActorController extends Controller
 {
@@ -43,5 +44,17 @@ class ActorController extends Controller
 
     public function delete($id){
 
+    }
+
+    public function setMovies(Request $request, $id){
+        $actor = Actor::find($id);
+        if ($actor){
+            $actor->movies()->detach();
+            $actor->movies()->attach($request->movies);
+            return response()->json(["success"=>true,"data"=>$actor]);
+        }
+        else {
+            return response()->json(["success"=>false, "message"=>"Actor not found"]);
+        }
     }
 }
