@@ -34,7 +34,7 @@ class MovieController extends Controller
     }
 
     public function getById(Request $request, $id){
-        $movie = Movie::find($id);
+        $movie = Movie::with('actors')->with('category')->find($id);
         return response()->json(["success"=>true,"data"=>$movie]);
     }
 

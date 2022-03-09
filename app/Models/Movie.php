@@ -11,25 +11,29 @@ class Movie extends Model
     protected $fillable = ["title","poster_url","synopsis","video_url","year","director_id","category_id"];
 
     public function movie(){
-        $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 // actor_movie
     public function actors(){
-        $this->belongsToMany(Actor::class);
+        return $this->belongsToMany(Actor::class);
     }
 
     public function director(){
-        $this->belongsTo(Director::class);
+        return $this->belongsTo(Director::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 // movie_user -> this is the default
 // We want to override the table name
 // The second paremeter, is to override the default table name
     public function favourites(){
-        $this->belongsToMany(User::class, 'movie_user_fav');
+        return $this->belongsToMany(User::class, 'movie_user_fav');
     }
 
     // movie_user
     public function bookmarks(){
-        $this->belongsToMany(User::class, 'movie_user_bookmark');
+        return $this->belongsToMany(User::class, 'movie_user_bookmark');
     }
 }
