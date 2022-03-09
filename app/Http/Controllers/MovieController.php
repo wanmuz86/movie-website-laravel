@@ -39,7 +39,19 @@ class MovieController extends Controller
     }
 
     public function update(Request $request, $id){
-
+        $movie = Movie::find($id);
+        if ($movie){
+            $updated = $movie->fill($request->all())->save();
+            if ($updated){
+                return response()->json(["success"=>true,"movie"=>$movie]);
+            }
+            else {
+                return response()->json(["success"=>false,"message"=>"Cannot saved"]);
+            }
+        }
+        else {
+            return response()->json(["success"=>false, "message"=>"Movie not found"]);
+        }
     }
 
     public function delete(Request $request, $id){
