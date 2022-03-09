@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ActorController;
-
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -49,3 +49,7 @@ Route::get('/actors',[ActorController::class,'getAll']);
 Route::get('/actors/{id}',[ActorController::class,'getById']);
 Route::put('/actors/{id}',[ActorController::class,'update']);
 Route::delete('/actors/{id}',[ActorController::class,'delete']);
+
+Route::post('/categories',[CategoryController::class,'create']);
+Route::get('/categories',[CategoryController::class,'getAll']);
+Route::get('/categories',[CategoryController::class,'getById']);
