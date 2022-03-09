@@ -52,4 +52,6 @@ Route::delete('/actors/{id}',[ActorController::class,'delete']);
 
 Route::post('/categories',[CategoryController::class,'create']);
 Route::get('/categories',[CategoryController::class,'getAll']);
-Route::get('/categories',[CategoryController::class,'getById']);
+Route::get('/categories/{id}',[CategoryController::class,'getById']);
+
+Route::get('/categories/{id}/movies',[CategoryController::class,'getMovies']);

@@ -34,4 +34,14 @@ class CategoryController extends Controller
         }
 
     }
+    
+    public function getMovies($id){
+        $category = Category::find($id);
+        if ($category){
+            return response()->json(["success"=>true,"data"=>$category->movies]);
+        }
+        else {
+            return response()->json(["success"=>false,"message"=>"Category not found"]);
+        }
+    }
 }
